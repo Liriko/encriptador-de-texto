@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html lang="es"></html>
-<html>
+<html lang="es">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <title>Encriptador de texto</title>
     </head>
     <body>
+        <header>
+        </header>
         <main>
-
         </main>
+        <footer>
+        </footer>
     </body>
-    <footer>
-    </footer>
 </html>
 <script>
 
+    function esValido(texto){
+
+    let respuesta = true;
+    let ascii;
+    const textoDescompuesto = descomponerTexto(texto);
+
+    // validar mayúsculas y carácteres especiales
+    for(let i = 0; i < textoDescompuesto.length; i++){
+        if(textoDescompuesto[i] != " "){
+            if(textoDescompuesto[i] === textoDescompuesto[i].toUpperCase())
+                respuesta = false;
+            ascii = textoDescompuesto[i].charCodeAt(0);
+            if(ascii < 64 && ascii > 91)
+                respuesta = false;
+        }
+    }
+
+    return respuesta;
+    }
+
     function encriptarTexto(texto){
 
-        let textoDescompuesto = descomponerTexto(texto, 'e');
+        if(esValido(texto)){
+            texto = texto.replaceAll("a", "ai");
+            texto = texto.replaceAll("e", "enter");
+            texto = texto.replaceAll("i", "imes");
+            texto = texto.replaceAll("o", "ober");
+            texto = texto.replaceAll("u", "uaft");
+        } else
+            texto = "Texto inválido";
+        
 
-        for (let i = 0; i < textoDescompuesto.length; i++){
-            switch(texto[i]){
-                case 'e':
-                textoDescompuesto[i] = "enter";
-                    break;
-                case 'i':
-                textoDescompuesto[i] = "imes";
-                    break;
-                case 'a':
-                textoDescompuesto[i] = "ai";
-                    break;
-                case 'o':
-                textoDescompuesto[i] = "ober";
-                    break;
-                case 'u':
-                textoDescompuesto[i] = "uaft";
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        return componerTexto(textoDescompuesto);
+        return texto;
     }
 
     function desencriptarTexto(texto){
@@ -56,19 +62,6 @@
     }
 
     function descomponerTexto(texto){
-
-        if(type == 'e')
-            return texto.split('');
-    }
-
-    function componerTexto(texto){
-
-        let textoCompuesto = "";
-
-        for(let i = 0; i < texto.length; i++){
-            textoCompuesto += texto[i];
-        }
-
-        return textoCompuesto;
+        return texto.split('');
     }
 </script>
