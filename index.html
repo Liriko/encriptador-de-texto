@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es"></html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Encriptador de texto</title>
+    </head>
+    <body>
+        <main>
+
+        </main>
+    </body>
+    <footer>
+    </footer>
+</html>
+<script>
+
+    function encriptarTexto(texto){
+
+        let textoDescompuesto = descomponerTexto(texto, 'e');
+
+        for (let i = 0; i < textoDescompuesto.length; i++){
+            switch(texto[i]){
+                case 'e':
+                textoDescompuesto[i] = "enter";
+                    break;
+                case 'i':
+                textoDescompuesto[i] = "imes";
+                    break;
+                case 'a':
+                textoDescompuesto[i] = "ai";
+                    break;
+                case 'o':
+                textoDescompuesto[i] = "ober";
+                    break;
+                case 'u':
+                textoDescompuesto[i] = "uaft";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return componerTexto(textoDescompuesto);
+    }
+
+    function desencriptarTexto(texto){
+
+        texto = texto.replaceAll("ai", "a");
+        texto = texto.replaceAll("enter", "e");
+        texto = texto.replaceAll("imes", "i");
+        texto = texto.replaceAll("ober", "o");
+        texto = texto.replaceAll("uaft", "u");
+
+        return texto;
+    }
+
+    function descomponerTexto(texto){
+
+        if(type == 'e')
+            return texto.split('');
+    }
+
+    function componerTexto(texto){
+
+        let textoCompuesto = "";
+
+        for(let i = 0; i < texto.length; i++){
+            textoCompuesto += texto[i];
+        }
+
+        return textoCompuesto;
+    }
+</script>
