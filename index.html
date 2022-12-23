@@ -15,6 +15,8 @@
 </html>
 <script>
 
+    alert(encriptarTexto("hola como estas"))
+
     function esValido(texto){
 
     let respuesta = true;
@@ -38,25 +40,24 @@
     function encriptarTexto(texto){
 
         if(esValido(texto)){
-            texto = texto.replaceAll("a", "ai");
             texto = texto.replaceAll("e", "enter");
-            texto = texto.replaceAll("i", "imes");
             texto = texto.replaceAll("o", "ober");
             texto = texto.replaceAll("u", "uaft");
+            texto = texto.replaceAll("i", "imes");
+            texto = texto.replaceAll("a", "ai");
         } else
             texto = "Texto inválido";
         
-
         return texto;
     }
 
     function desencriptarTexto(texto){
 
-        texto = texto.replaceAll("ai", "a");
-        texto = texto.replaceAll("enter", "e");
-        texto = texto.replaceAll("imes", "i");
+        texto = texto.replaceAll("enter", "e"); 
         texto = texto.replaceAll("ober", "o");
         texto = texto.replaceAll("uaft", "u");
+        texto = texto.replaceAll("imes", "i");
+        texto = texto.replaceAll("ai", "a");
 
         return texto;
     }
