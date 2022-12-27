@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="reset.css">
-		<link rel="stylesheet" href="style.css">
-        <title>Encriptador de texto</title>
-    </head>
-    <body>
-        <header>
-        </header>
-        <main>
-            <div>
-                <textarea name="mensaje-entrada" id="m-entrada" cols="30" rows="10" placeholder="Ingrese el texto aquí"></textarea>
-            </div>
-            <div>
-                <button>Encriptar</button>
-                <button>Desencriptar</button>
-            </div>
-            <div>
-                <textarea name="mensaje-salida" cols="30" rows="10"></textarea>
-            </div>
-        </main>
-        <footer>
-        </footer>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+    <title>Encriptador de texto</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="img/Vector.png" alt="Logo Alura Latam" class="logo">
+        </div>
+    </header>
+    <main>
+        <div>
+            <textarea id="mensaje-entrada" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <ul>
+                <li><button id="boton-encriptar">Encriptar</button></li>
+                <li><button id="boton-desencriptar">Desencriptar</button></li>
+            </ul>           
+        </div>
+        <div>
+            <textarea id="mensaje-salida" cols="30" rows="10"></textarea>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
 </html>
+
 <script>
+
+    let mensajeEntrada = document.querySelector("#mensaje-entrada");
+    let botonEncriptar = document.querySelector("#boton-encriptar");
+    let botonDesencriptar = document.querySelector("#boton-desencriptar");
+    let mensajeSalida = document.querySelector("#mensaje-salida");
+
+    botonEncriptar.onclick = encriptarTexto;
+    botonDesencriptar.onclick = desencriptarTexto;
 
     function esValido(texto){
 
@@ -47,7 +63,9 @@
     return respuesta;
     }
 
-    function encriptarTexto(texto){
+    function encriptarTexto(){ 
+
+        let texto = mensajeEntrada.value;
 
         if(esValido(texto)){
             texto = texto.replaceAll("e", "enter");
@@ -56,12 +74,14 @@
             texto = texto.replaceAll("i", "imes");
             texto = texto.replaceAll("a", "ai");
         } else
-            texto = "Texto inválido";
+        texto = "Texto inválido";
         
-        return texto;
+        mensajeSalida.value = texto;
     }
 
-    function desencriptarTexto(texto){
+    function desencriptarTexto(){
+
+        let texto = mensajeEntrada.value;
 
         texto = texto.replaceAll("enter", "e"); 
         texto = texto.replaceAll("ober", "o");
@@ -69,7 +89,7 @@
         texto = texto.replaceAll("imes", "i");
         texto = texto.replaceAll("ai", "a");
 
-        return texto;
+        mensajeSalida.value = texto;
     }
 
     function descomponerTexto(texto){
